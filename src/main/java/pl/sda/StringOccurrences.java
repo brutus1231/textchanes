@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringOccurrances {
+public class StringOccurrences {
 
     public static void main(String[] args) {
         String text = getInputText("Podaj tekst: ");

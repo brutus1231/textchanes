@@ -1,4 +1,4 @@
-package pl;
+package pl.sda;
 
 import java.util.ArrayList;
 import java.util.Arrays;

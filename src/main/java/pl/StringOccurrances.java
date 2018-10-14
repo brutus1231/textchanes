@@ -1,5 +1,8 @@
 package pl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,6 +15,7 @@ public class StringOccurrances {
         int[][] result = findAll(text, key);
         print(result);
 
+        findAllIndexOf(text, key);
     }
 
     private static void print(int[][] result) {
@@ -45,8 +49,21 @@ public class StringOccurrances {
             occurrances[i][1] = matcher.end() - 1;
         }
 
-        //int index = text.indexOf(key);
-        //System.out.println("[{" + index + "," + (index + key.length()) +"}]");
         return occurrances;
+    }
+
+    private static List findAllIndexOf(String text, String key) {
+        System.out.println();
+        int index = 0;
+        List result = new ArrayList();
+        do {
+            index = text.indexOf(key, index);
+            if (index == -1) break;
+            result.add(Arrays.asList(index, index + key.length() - 1));
+            index++;
+        } while (true);
+
+        System.out.println(result);
+        return result;
     }
 }

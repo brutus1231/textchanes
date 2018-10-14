@@ -11,9 +11,15 @@ public class StringOccurrances {
         String key = getInputText("Podaj szukany tekst: ");
         int[][] result = findAll(text, key);
         print(result);
+
     }
 
     private static void print(int[][] result) {
+        System.out.print("[");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print("{" + result[i][0] + " " + result[i][1] + "}");
+        }
+        System.out.print("]");
     }
 
     private static String getInputText(String message) {
@@ -23,18 +29,24 @@ public class StringOccurrances {
     }
 
     private static int[][] findAll(String text, String key) {
-
         Pattern pattern = Pattern.compile(key);
         Matcher matcher = pattern.matcher(text);
 
+        int counter = 0;
         while (matcher.find()) {
-            //System.out.println(matcher.start() + " " + (matcher.end() - 1));
-            //System.out.println(matcher.group());
+            counter++;
         }
         matcher.reset();
+        int[][] occurrances = new int[counter][2];
+
+        for (int i = 0; i < counter; i++) {
+            matcher.find();
+            occurrances[i][0] = matcher.start();
+            occurrances[i][1] = matcher.end() - 1;
+        }
 
         //int index = text.indexOf(key);
         //System.out.println("[{" + index + "," + (index + key.length()) +"}]");
-        return null;
+        return occurrances;
     }
 }

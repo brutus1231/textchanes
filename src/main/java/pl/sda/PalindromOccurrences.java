@@ -19,7 +19,15 @@ public class PalindromOccurrences {
                 }
                 System.out.println(text.substring(i - j, i + j + 1));
             }
+        }
 
+        for (int i = 1; i < text.length(); i++) {
+            for (int j = i, k = i-1; j >= 0 && k < text.length(); j++, k--) {
+                if (text.charAt(j) != text.charAt(k)) {
+                    break;
+                }
+                System.out.println(text.substring(k, j + 1));
+            }
         }
     }
 
